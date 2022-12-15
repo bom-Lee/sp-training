@@ -10,7 +10,16 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2022_12_14_071914) do
+ActiveRecord::Schema[7.0].define(version: 2022_12_14_080509) do
+  create_table "affiliates", force: :cascade do |t|
+    t.integer "university_id", null: false
+    t.integer "researcher_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["researcher_id"], name: "index_affiliates_on_researcher_id"
+    t.index ["university_id"], name: "index_affiliates_on_university_id"
+  end
+
   create_table "notices", force: :cascade do |t|
     t.string "title"
     t.text "content"
@@ -26,4 +35,13 @@ ActiveRecord::Schema[7.0].define(version: 2022_12_14_071914) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "universities", force: :cascade do |t|
+    t.string "name"
+    t.string "domain"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  add_foreign_key "affiliates", "researchers"
+  add_foreign_key "affiliates", "universities"
 end
