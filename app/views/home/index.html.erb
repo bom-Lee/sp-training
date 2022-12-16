@@ -171,9 +171,6 @@
         <section>
           <h3>Relation Test</h3>
           <% @universities.each do |university| %>
-            <%= university.name %></br>
-            (<% university.researchers.each do |researcher|%>
-              <%= researcher.name %>
-            <% end %>)</br>
+            <%= university.name %> (<%= university.researchers.count %>)</br>
           <% end %>
         </section>
