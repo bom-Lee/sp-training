@@ -170,6 +170,7 @@
 
         <section>
           <h3>Relation Test</h3>
+          <h5>All University: <%= University.count(:name) %></h5></br>
           <% @universities.each do |university| %>
             <%= university.name %></br>
             (<% university.researchers.each do |researcher|%>
